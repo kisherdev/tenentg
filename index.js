@@ -2,15 +2,13 @@ const fs = require('fs')
 const { QuickDB } = require("quick.db");
 const db = new QuickDB();
 const TelegramBot = require('node-telegram-bot-api');
-const { token } = require('./config.json');
+const { token, logs, moders, bots, emotions, rp, renders, arts, skins4d, skins } = require('./config.json');
 const bot = new TelegramBot(token, { polling: true });
 
 let adminStates = {};
 let userStates = {};
-const logs = -1002161976497
-const moders = -1002228537713
 
-const services_chats = [{ name: 'Боты', value: -1002181228695 }, { name: 'Эмоции', value: -1002176975721 }, { name: 'Ресурс-Паки', value: -1002218824617 }, { name: 'Рендер', value: -1002185409424 }, { name: 'Арты', value: -1002194854040 }, { name: '4D Скин', value: -1002179627975 }, { name: 'Скин', value: -1002171514904 }]
+const services_chats = [{ name: 'Боты', value: bots }, { name: 'Эмоции', value: emotions }, { name: 'Ресурс-Паки', value: rp }, { name: 'Рендер', value: renders }, { name: 'Арты', value: arts }, { name: '4D Скин', value: skins4d }, { name: 'Скин', value: skins }]
 
 bot.on('text', async msg => {
     const bans = await db.get('bans')
